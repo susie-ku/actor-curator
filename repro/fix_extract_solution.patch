@@ -1,0 +1,12 @@
+--- a/verl/utils/reward_score/__init__.py
++++ b/verl/utils/reward_score/__init__.py
+@@ -60,7 +60,8 @@
+     elif "<|im_start|>assistant" in solution_str:
+         solution_str = solution_str.split("<|im_start|>assistant", 1)[1]
+     else:
+-        return None
++        # reward managers pass the decoded *response* only (no prompt / role marker): score it as-is
++        pass
+     
+     solution_str = solution_str.split('\n')[-1]
+ 
