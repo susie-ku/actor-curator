@@ -60,7 +60,8 @@ def extract_solution(solution_str):
     elif "<|im_start|>assistant" in solution_str:
         solution_str = solution_str.split("<|im_start|>assistant", 1)[1]
     else:
-        return None
+        # reward managers pass the decoded *response* only (no prompt / role marker): score it as-is
+        pass
     
     solution_str = solution_str.split('\n')[-1]
 
