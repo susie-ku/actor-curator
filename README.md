@@ -16,6 +16,24 @@ This repository is a fork of **[verl](https://github.com/volcengine/verl)** (Apa
 the Actor-Curator method is implemented on top of verl's PPO training loop. See
 [Attribution & license](#attribution--license).
 
+
+---
+
+## This branch: independent reproduction of Table 1 (`repro/table1-qwen2.5-3b`)
+
+An end-to-end re-run of Table 1 (Qwen2.5-3B actor, Qwen3-0.6B curator; Countdown / Zebra / ARC-1D / MATH ×
+Actor-Curator / Uniform / SEC / PCL, 100 steps, one 96 GB GPU per run). **Work in progress: 13 of 16 cells are
+finished; ARC-1D SEC/PCL and a greedy re-evaluation of the MATH checkpoints are still running** (status in PROBLEMS.md).
+
+| Where | What |
+|---|---|
+| [`repro/results.md`](repro/results.md) | Peak validation accuracy per cell next to the paper's numbers, plus the untrained model's greedy MATH scores. |
+| [`PROBLEMS.md`](PROBLEMS.md) | Every deviation from the paper, open question, bug found (A), protocol decision (B), observation (C) and a dated status log (D). Start with A8, B1 and the last entry of D. |
+| [`repro/README.md`](repro/README.md) | How the runs were launched (SLURM wrappers, Hydra overrides, single-GPU changes). |
+| [`repro/run.sh`](repro/run.sh) | The one script that turns a `recipe/deepscaler/*.sh` file into a run: it patches a temporary copy and passes the paper's Table-2 curator settings as overrides; `recipe/` itself is untouched. |
+| [`repro/collect_results.py`](repro/collect_results.py) | Regenerates the results table from the TensorBoard logs. |
+| `verl/utils/reward_score/__init__.py` | The only code change (commit "fix(reward)"): without it Countdown / Zebra / ARC-1D rewards are identically zero, see PROBLEMS.md A8. |
+
 ---
 
 ## How it works
