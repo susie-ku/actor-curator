@@ -25,6 +25,13 @@ An end-to-end re-run of Table 1 (Qwen2.5-3B actor, Qwen3-0.6B curator; Countdown
 Actor-Curator / Uniform / SEC / PCL, 100 steps, one 96 GB GPU per run). **Work in progress: 13 of 16 cells are
 finished; ARC-1D SEC/PCL and a greedy re-evaluation of the MATH checkpoints are still running** (status in PROBLEMS.md).
 
+The runs were set up and driven by an AI agent (Claude Code) from this single instruction, given on 2026-11-04;
+every later decision it had to make is logged in PROBLEMS.md:
+
+> using a README, follow it to provide results end-to-end from the paper, do not pay attention to actor_curator_ideas.md
+> for now, feel free to run jobs, but if yu are not sure which decision to make OR have problems running something OR make
+> som decisions out of scope of the paper OR modify the code, ask me and write the quesion/problems down into the PROBLEMS.md
+
 | Where | What |
 |---|---|
 | [`repro/results.md`](repro/results.md) | Peak validation accuracy per cell next to the paper's numbers, plus the untrained model's greedy MATH scores. |
